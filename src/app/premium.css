@@ -1,0 +1,756 @@
+/* ============================================================
+   MAMMAJI REAL ESTATE — LUXURY EDITORIAL REFINEMENTS
+   Layered over globals.css and theme.css.
+   Champagne gold (#c5a869), Obsidian emerald (#071914),
+   Vellum ivory (#f7f4eb).
+   ============================================================ */
+
+/* ─── 1. PREMIUM TYPOGRAPHY ─── */
+:root {
+  --serif: var(--font-playfair, Georgia), 'Times New Roman', serif;
+  --sans: var(--font-inter, Arial), Helvetica, sans-serif;
+  --ease-premium: cubic-bezier(.22, 1, .36, 1);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  position: relative;
+}
+
+/* Subtle architectural film-grain overlay (0 network overhead) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+
+/* ─── 2. SCROLL-REVEAL ANIMATIONS (progressive enhancement) ─── */
+@supports (animation-timeline: view()) {
+  .living-interlude,
+  .featured,
+  .gallery,
+  .neelbad-reasons,
+  .statement,
+  .fold,
+  .service-band,
+  .trust,
+  .voices,
+  .visit,
+  .faq,
+  .enquiry,
+  .location-panel,
+  .proof,
+  .relief-transition,
+  .reality-sheets,
+  .assurance-rows,
+  .handoff,
+  .contact-detail,
+  .location-context {
+    animation: revealUp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 25%;
+  }
+
+  .property-card,
+  .voice-grid article,
+  .service-list article,
+  .reason-list article,
+  .material-card,
+  .proof-sheet {
+    animation: revealUp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  @keyframes revealUp {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+
+/* ─── 3. HEADER ENHANCEMENTS ─── */
+.site-header {
+  background: rgba(7, 25, 20, .68);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(197, 168, 105, .15);
+  transition: background .3s ease;
+}
+
+/* Nav link underline animation */
+.site-header nav a {
+  position: relative;
+  transition: color .2s ease;
+}
+
+.site-header nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: var(--gold, #c5a869);
+  transition: width .3s var(--ease-premium);
+}
+
+.site-header nav a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger toggle — hidden on desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ivory, #f7f4eb);
+  transition: transform .3s var(--ease-premium), opacity .2s ease;
+}
+
+.nav-toggle span + span {
+  margin-top: 6px;
+}
+
+.nav-toggle.is-open span:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-open span:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Desktop-only utility */
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: flex;
+  }
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Mobile nav drawer */
+.nav-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(7, 25, 20, .98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  transform: translateX(100%);
+  transition: transform .5s var(--ease-premium);
+  pointer-events: none;
+}
+
+.nav-drawer.is-open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.nav-drawer a {
+  font: clamp(1.8rem, 5vw, 2.8rem) / .95 var(--serif);
+  font-weight: 400;
+  letter-spacing: -.03em;
+  color: var(--ivory, #f7f4eb);
+  transition: color .2s ease, transform .2s ease;
+}
+
+.nav-drawer a:hover {
+  color: var(--gold, #c5a869);
+  transform: translateX(6px);
+}
+
+.nav-drawer .drawer-cta {
+  margin-top: 24px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .07em;
+}
+
+
+/* ─── 4. BUTTON REFINEMENTS ─── */
+.button {
+  border-radius: 6px;
+  transition: transform .28s var(--ease-premium), box-shadow .28s ease, background .22s ease, border-color .22s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.button-gold {
+  background: linear-gradient(135deg, #c5a869 0%, #dfc78f 100%) !important;
+  color: #071914 !important;
+  box-shadow: 0 8px 24px rgba(197, 168, 105, .25) !important;
+  border: 1px solid rgba(223, 199, 143, .4) !important;
+}
+
+.button-gold:hover {
+  background: linear-gradient(135deg, #d4ba7d 0%, #edd8a4 100%) !important;
+  box-shadow: 0 14px 34px rgba(197, 168, 105, .38) !important;
+  transform: translateY(-2px);
+}
+
+/* Shimmer sweep on hover */
+.button-gold::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .25), transparent);
+  transform: skewX(-20deg);
+  transition: left .65s ease;
+  pointer-events: none;
+}
+
+.button-gold:hover::after {
+  left: 125%;
+}
+
+.button-line {
+  border-radius: 6px;
+  transition: background .22s ease, border-color .22s ease, transform .28s var(--ease-premium);
+  border-color: rgba(197, 168, 105, 0.4);
+}
+
+.button-line:hover {
+  background: rgba(197, 168, 105, .1);
+  border-color: var(--gold, #c5a869);
+  transform: translateY(-2px);
+}
+
+
+/* ─── 5. CARD & IMAGE HOVER ─── */
+.property-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .4s var(--ease-premium), box-shadow .4s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(7, 25, 20, .14);
+}
+
+.property-image img {
+  transition: transform .65s var(--ease-premium);
+}
+
+.property-card:hover .property-image img {
+  transform: scale(1.05);
+}
+
+.voice-grid article {
+  border-radius: 10px;
+  border-left: 3px solid transparent;
+  transition: border-color .3s ease, box-shadow .3s ease, transform .3s var(--ease-premium);
+}
+
+.voice-grid article:hover {
+  border-left-color: var(--gold, #c5a869);
+  box-shadow: 0 8px 28px rgba(7, 25, 20, .08);
+  transform: translateY(-4px);
+}
+
+.service-list article {
+  transition: background .3s ease;
+}
+
+.service-list article:hover {
+  background: #0f3027;
+}
+
+.gallery figure {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 12px 32px rgba(7, 25, 20, 0.1);
+}
+
+.gallery figcaption {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 6px 12px;
+  background: rgba(7, 25, 20, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--ivory, #f7f4eb);
+  border: 1px solid rgba(197, 168, 105, 0.3);
+  border-radius: 4px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.gallery img {
+  transition: transform .55s var(--ease-premium);
+}
+
+.gallery figure:hover img {
+  transform: scale(1.04);
+}
+
+.trust-image {
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.trust-image img {
+  transition: transform .65s var(--ease-premium) !important;
+}
+
+.trust-image:hover img {
+  transform: scale(1.03) !important;
+}
+
+
+/* ─── 6. PLOT SHEET & BUTTONS ─── */
+.plot-button {
+  border-radius: 8px;
+  transition: all .22s var(--ease-premium);
+}
+
+.plot-button.active {
+  border-radius: 8px;
+  border-left: 3px solid var(--gold, #c5a869) !important;
+}
+
+.comparison {
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .06);
+}
+
+/* SVG plot selected pulse */
+@keyframes plotPulse {
+  0%, 100% { stroke-opacity: 1; }
+  50% { stroke-opacity: .65; }
+}
+
+.site-plan-vector .svg-plot.selected .plot-visible {
+  animation: plotPulse 2.4s ease-in-out infinite;
+}
+
+.site-plan-vector .svg-plot:hover .plot-visible {
+  fill: #f0e8d6;
+}
+
+
+/* ─── 7. FAQ SMOOTH ACCORDION ─── */
+.faq-list details,
+.assurance-rows details {
+  transition: padding .3s ease;
+}
+
+.faq-list details[open],
+.assurance-rows details[open] {
+  padding-bottom: 24px;
+}
+
+.faq-list summary span,
+.assurance-rows summary span {
+  transition: transform .35s var(--ease-premium);
+  display: inline-block;
+}
+
+.faq-list details[open] > summary span,
+.assurance-rows details[open] > summary span {
+  transform: rotate(45deg);
+}
+
+.faq-list details[open] p,
+.assurance-rows details[open] p {
+  animation: accordionIn .4s var(--ease-premium) forwards;
+}
+
+@keyframes accordionIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ─── 8. FORM FOCUS ─── */
+.enquiry-form input,
+.enquiry-form select,
+.enquiry-form textarea {
+  transition: border-color .22s ease, box-shadow .22s ease, background .22s ease;
+  border-radius: 6px;
+}
+
+.enquiry-form input:focus,
+.enquiry-form select:focus,
+.enquiry-form textarea:focus {
+  outline: none;
+  border-color: var(--gold, #c5a869);
+  box-shadow: 0 0 0 3px rgba(197, 168, 105, .15);
+  background: rgba(247, 244, 235, .08);
+}
+
+.enquiry-form label {
+  transition: color .2s ease;
+}
+
+.enquiry-form label:focus-within {
+  color: var(--gold, #c5a869);
+}
+
+
+/* ─── 9. FOOTER ─── */
+.site-footer {
+  position: relative;
+  background: var(--forest, #071914);
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: clamp(20px, 8vw, 128px);
+  right: clamp(20px, 8vw, 128px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold, #c5a869), transparent);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.footer-brand .brand-mark {
+  border: 1px solid rgba(197, 168, 105, .4);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--gold, #c5a869);
+  font: 700 18px var(--serif);
+  flex-shrink: 0;
+}
+
+.footer-brand > span {
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #a7aaa1;
+}
+
+.footer-links {
+  display: flex;
+  gap: 22px;
+  margin-top: 18px;
+}
+
+.footer-links a {
+  font-size: 12px;
+  letter-spacing: .06em;
+  color: #a7b0a9;
+  transition: color .2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--gold, #c5a869);
+}
+
+
+/* ─── 10. MISCELLANEOUS POLISH ─── */
+
+/* Custom text selection colour */
+::selection {
+  background: rgba(197, 168, 105, .25);
+  color: inherit;
+}
+
+/* Consistent focus-visible ring */
+a:focus-visible,
+button:focus-visible,
+details summary:focus-visible {
+  outline: 2px solid var(--gold, #c5a869);
+  outline-offset: 3px;
+}
+
+/* Gold decorative baseline under the hero */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold, #c5a869), transparent);
+  z-index: 1;
+}
+
+/* Custom scrollbar (webkit) */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: #071914; }
+::-webkit-scrollbar-thumb { background: #163a30; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #235245; }
+
+/* Eyebrow decorative dash */
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* Exclude tight layouts where the dash would crowd */
+.plot-sheet .eyebrow::before,
+.comparison .eyebrow::before,
+.property-finder .eyebrow::before,
+.matrix-title::before {
+  display: none;
+}
+
+/* Route-line breathing pulse */
+@keyframes routeLinePulse {
+  0%, 100% { opacity: .8; }
+  50%      { opacity: .4; }
+}
+
+.route-line {
+  animation: routeLinePulse 3.5s ease-in-out infinite;
+}
+
+/* Visit-slot pill hover */
+.visit-slots span {
+  border-radius: 6px;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+  cursor: default;
+}
+
+.visit-slots span:hover {
+  background: rgba(197, 168, 105, .1);
+  border-color: var(--gold, #c5a869);
+  color: var(--gold, #c5a869);
+}
+
+/* About value pills hover */
+.about-values span {
+  border-radius: 4px;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.about-values span:hover {
+  background: rgba(197, 168, 105, .08);
+  border-color: var(--gold, #c5a869);
+  color: var(--gold, #c5a869);
+}
+
+/* Rounded map placeholder */
+.map-placeholder {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ─── LUXURY HERO & FINDER CARD ─── */
+.hero {
+  background: radial-gradient(circle at 40% 40%, #0d2821 0%, #071914 85%) !important;
+}
+
+.hero-copy h1 {
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.hero-copy h1 em {
+  color: var(--gold-light, #dfc78f) !important;
+  font-style: italic;
+}
+
+.property-finder {
+  border-radius: 16px !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  background: rgba(6, 26, 20, 0.88) !important;
+  border: 1px solid rgba(197, 168, 105, 0.35) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(247, 244, 235, 0.12) !important;
+  padding: 30px !important;
+}
+
+.property-finder h2 {
+  font: 2.2rem / 1.05 var(--serif, Georgia, serif) !important;
+  letter-spacing: -0.03em !important;
+  margin-bottom: 22px !important;
+}
+
+.finder-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.finder-fields label {
+  border-radius: 8px !important;
+  background: rgba(247, 244, 235, 0.04) !important;
+  border: 1px solid rgba(197, 168, 105, 0.18) !important;
+  color: var(--gold, #c5a869) !important;
+  font-size: 8px !important;
+  letter-spacing: 0.12em !important;
+  font-weight: 700 !important;
+  padding: 10px 12px !important;
+  transition: all 0.22s var(--ease-premium);
+}
+
+.finder-fields label:hover {
+  border-color: rgba(197, 168, 105, 0.45) !important;
+  background: rgba(197, 168, 105, 0.08) !important;
+  transform: translateY(-1px);
+}
+
+.finder-fields span {
+  display: block;
+  margin-top: 4px;
+  color: var(--ivory, #f7f4eb) !important;
+  font-size: 11px !important;
+  font-weight: 400;
+  letter-spacing: 0 !important;
+}
+
+.property-finder .button {
+  width: 100%;
+  min-height: 48px;
+  letter-spacing: 0.1em;
+}
+
+/* Relief blueprint underlay */
+.relief {
+  opacity: 0.32 !important;
+  border-color: rgba(197, 168, 105, 0.3) !important;
+  pointer-events: none;
+}
+
+.relief-plot {
+  border-color: rgba(197, 168, 105, 0.35) !important;
+  background: rgba(197, 168, 105, 0.03) !important;
+}
+
+.relief span {
+  color: var(--gold, #c5a869) !important;
+  opacity: 0.22;
+  font-size: 54px !important;
+}
+
+/* Hero architectural metadata status bar */
+.hero-meta-bar {
+  position: absolute;
+  bottom: 28px;
+  left: clamp(20px, 4vw, 64px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8c948e;
+  flex-wrap: wrap;
+}
+
+.meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--gold-light, #dfc78f);
+  font-weight: 600;
+}
+
+.compass-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--gold, #c5a869);
+  color: var(--gold, #c5a869);
+  font: 700 9px var(--sans, Arial, sans-serif);
+  font-style: normal;
+}
+
+.meta-sep {
+  color: rgba(197, 168, 105, 0.25);
+}
+
+@media (max-width: 900px) {
+  .hero-meta-bar {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    padding: 0 20px 30px;
+  }
+}
+
+/* Proof-sheet image lift on hover */
+.proof-sheet:hover .proof-sheet-image img {
+  filter: saturate(.75) contrast(1.08);
+}
+
+/* Smooth page entrance */
+main {
+  animation: pageIn .55s var(--ease-premium);
+}
+
+@keyframes pageIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Respect reduced-motion globally */
+@media (prefers-reduced-motion: reduce) {
+  main { animation: none; }
+  .route-line { animation: none; }
+  .site-plan-vector .svg-plot.selected .plot-visible { animation: none; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
+}

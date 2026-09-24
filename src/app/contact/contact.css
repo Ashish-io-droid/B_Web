@@ -1,0 +1,109 @@
+.contact-detail {
+  background: var(--ivory, #f7f4eb);
+}
+
+.contact-actions-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.contact-grid-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(30px, 6vw, 70px);
+  align-items: center;
+}
+
+.direct-phone-link {
+  font: clamp(2.4rem, 5.5vw, 5.2rem) / 0.9 var(--serif, Georgia, serif);
+  letter-spacing: -0.06em;
+  display: block;
+  margin-bottom: 20px;
+  color: var(--ink, #121614);
+  transition: color 0.2s ease;
+}
+
+.direct-phone-link:hover {
+  color: var(--gold, #c5a869);
+}
+
+.contact-info-block > p:last-of-type {
+  max-width: 440px;
+  color: #595b53;
+  font-size: 16px;
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+.contact-timing-card {
+  padding: 18px 20px;
+  background: rgba(18, 22, 20, 0.05);
+  border: 1px solid rgba(18, 22, 20, 0.1);
+  border-radius: 8px;
+  max-width: 440px;
+}
+
+.contact-timing-card span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dark, #8c6f2e);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.contact-timing-card strong {
+  display: block;
+  font-size: 14px;
+  color: var(--ink, #121614);
+  margin-bottom: 4px;
+}
+
+.contact-timing-card small {
+  display: block;
+  font-size: 11px;
+  color: #787d75;
+}
+
+.contact-image-frame {
+  position: relative;
+  min-height: 360px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 44px rgba(7, 25, 20, 0.14);
+}
+
+.contact-image-frame img {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.contact-image-frame:hover img {
+  transform: scale(1.04);
+}
+
+.contact-img-badge {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 5px 9px;
+  background: var(--forest, #071914);
+  color: var(--gold, #c5a869);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  border: 1px solid rgba(197, 168, 105, 0.3);
+}
+
+@media (max-width: 800px) {
+  .contact-grid-split {
+    grid-template-columns: 1fr;
+  }
+  .contact-image-frame {
+    min-height: 260px;
+  }
+}

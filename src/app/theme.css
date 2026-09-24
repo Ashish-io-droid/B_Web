@@ -1,0 +1,48 @@
+:root {
+  --forest: #071914;
+  --forest-2: #0d2821;
+  --ivory: #f7f4eb;
+  --gold: #c5a869;
+  --gold-light: #dfc78f;
+  --gold-dark: #9e8140;
+  --ink: #121614;
+  --stone: #787d75;
+  --line: rgba(247, 244, 235, 0.14);
+}
+
+html { text-rendering: optimizeLegibility; }
+::selection { background: #c5a869; color: #071914; }
+
+.hero-grid { opacity: .22; }
+.relief { border-color: rgba(197, 168, 105, 0.42); }
+.relief-road { background: #0f3027; }
+.relief-plot { border-color: rgba(247, 244, 235, 0.35); background: rgba(197, 168, 105, 0.04); }
+.button-gold {
+  background: linear-gradient(135deg, #c5a869 0%, #dfc78f 100%) !important;
+  color: #071914 !important;
+  box-shadow: 0 10px 24px rgba(197, 168, 105, 0.22) !important;
+  border: 1px solid rgba(223, 199, 143, 0.5) !important;
+}
+.button-gold:hover {
+  background: linear-gradient(135deg, #d4ba7d 0%, #edd8a4 100%) !important;
+  box-shadow: 0 14px 32px rgba(197, 168, 105, 0.35) !important;
+}
+.statement-content p, .proof-heading > p, .assurance p, .explorer-heading > p { color: #5f635c; }
+.fold { background: linear-gradient(125deg, #0d2821, #061612); }
+.plan-visual { background: #efebe0; }
+.plot-button:hover, .plot-button.active {
+  border-color: var(--gold) !important;
+  background: #ede4ce !important;
+}
+.comparison { background: #ede5ce; }
+.location-context, .assurance, .contact-detail { background: #efebe0; }
+.site-footer { background: #071914; }
+.material-index { background: #09201a; }
+.material-crop { background: #123027; }
+.site-header { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+
+.brand-logo { width: 146px; height: 74px; object-fit: contain; display: block; }
+.footer-logo { width: 174px; height: auto; object-fit: contain; display: block; }
+.about-logo-mark { display: flex; align-items: center; min-height: 210px; }
+.about-logo-mark img { width: min(100%, 300px); height: auto; object-fit: contain; }
+@media (max-width: 700px) { .brand-logo { width: 118px; height: 62px; } .footer-logo { width: 150px; } .about-logo-mark { min-height: 145px; } .about-logo-mark img { width: 220px; } }

@@ -1,0 +1,742 @@
+/* -------------------------------------------------------------------------
+   Neelbad reference-plan styling
+   The SVG is refined into a clean, simple, legible architectural masterplan.
+   ------------------------------------------------------------------------- */
+
+.site-plan-vector {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border: 1px solid rgba(197, 168, 105, 0.35);
+  background: #faf8f2;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px -12px rgba(0, 0, 0, 0.12), inset 0 0 40px rgba(197, 168, 105, 0.04);
+}
+
+.site-plan-vector .plan-ground {
+  fill: #faf8f2;
+}
+
+.site-plan-vector .plan-outer-border {
+  fill: none;
+  stroke: rgba(197, 168, 105, 0.28);
+  stroke-width: 1.5;
+}
+
+.site-plan-vector .plan-cad-marks path {
+  stroke: rgba(197, 168, 105, 0.65);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.site-plan-vector .cad-coord {
+  fill: #8a9288;
+  font-family: var(--font-mono, monospace);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+}
+
+/* Header Block */
+.site-plan-vector .plan-header-block {
+  pointer-events: none;
+}
+
+.site-plan-vector .plan-brand-heading {
+  fill: #121815;
+  font-family: var(--serif, Georgia, serif);
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+.site-plan-vector .plan-sub-heading {
+  fill: #6e766c;
+  font-family: var(--sans, Arial, sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.site-plan-vector .plan-header-line {
+  stroke: rgba(197, 168, 105, 0.45);
+  stroke-width: 1;
+}
+
+/* Roads */
+.site-plan-vector .vector-road {
+  fill: #ede8dc;
+  stroke: #8d9890;
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.site-plan-vector .branch-road {
+  fill: #ede8dc;
+  stroke: #8d9890;
+}
+
+.site-plan-vector .existing-road {
+  fill: #e2dcd0;
+  stroke: #7e8a82;
+  stroke-width: 2.2;
+}
+
+.site-plan-vector .road-text {
+  fill: #484f4a;
+  font-family: var(--sans, Arial, sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-anchor: middle;
+}
+
+.site-plan-vector .existing-road-text {
+  font-size: 12.5px;
+  letter-spacing: 0.11em;
+  fill: #343c36;
+}
+
+/* Common Green Area */
+.site-plan-vector .common-area path {
+  fill: #dfeade;
+  stroke: #688f65;
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.site-plan-vector .common-area text {
+  display: block !important;
+  fill: #244e22;
+  font-family: var(--sans, Arial, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+}
+
+/* Plots */
+.site-plan-vector .svg-plot {
+  cursor: pointer;
+  outline: none;
+}
+
+.site-plan-vector .plot-hitbox {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 18;
+  pointer-events: stroke;
+  vector-effect: non-scaling-stroke;
+}
+
+.site-plan-vector .plot-visible {
+  fill: #fdfcf9;
+  stroke: #252e27;
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+  transition: fill 180ms ease, stroke 180ms ease, stroke-width 180ms ease;
+  pointer-events: none;
+}
+
+.site-plan-vector .svg-plot.corner-plot .plot-visible {
+  fill: #faf5ea;
+}
+
+.site-plan-vector .svg-plot:hover .plot-visible,
+.site-plan-vector .svg-plot:focus-visible .plot-visible {
+  fill: #f5eedc;
+  stroke: #c5a869;
+  stroke-width: 2.6;
+}
+
+.site-plan-vector .svg-plot.selected .plot-visible {
+  fill: #faf0d4;
+  stroke: #c5a869;
+  stroke-width: 3.4;
+}
+
+/* Plot Typography - Simple, Centered, Clean */
+.site-plan-vector .plot-copy {
+  pointer-events: none;
+}
+
+.site-plan-vector .plot-id {
+  fill: #161c18;
+  font-family: var(--serif, Georgia, serif);
+  font-size: 24px;
+  font-weight: 600;
+  text-anchor: middle;
+  letter-spacing: -0.02em;
+  transition: fill 180ms ease;
+}
+
+.site-plan-vector .plot-area {
+  fill: #5c625a;
+  font-family: var(--sans, Arial, sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-anchor: middle;
+  transition: fill 180ms ease;
+}
+
+.site-plan-vector .plot-corner-dot {
+  fill: #c5a869;
+}
+
+.site-plan-vector .svg-plot:hover .plot-id {
+  fill: #071914;
+  font-weight: 700;
+}
+
+.site-plan-vector .svg-plot:hover .plot-area {
+  fill: #8a6f33;
+  font-weight: 600;
+}
+
+.site-plan-vector .svg-plot.selected .plot-id {
+  fill: #071914;
+  font-weight: 700;
+}
+
+.site-plan-vector .svg-plot.selected .plot-area {
+  fill: #785a20;
+  font-weight: 600;
+}
+
+/* Edge dimensions withheld for simplicity */
+.site-plan-vector .plot-dimensions { display: none; }
+
+/* Refined Compass Rose */
+.site-plan-vector .reference-compass {
+  fill: none;
+  pointer-events: none;
+}
+
+.site-plan-vector .compass-outer-ring {
+  stroke: rgba(197, 168, 105, 0.4);
+  stroke-width: 1.2;
+  fill: none;
+}
+
+.site-plan-vector .compass-inner-ring {
+  stroke: rgba(30, 36, 32, 0.18);
+  stroke-width: 0.9;
+  fill: none;
+}
+
+.site-plan-vector .compass-crosshair {
+  stroke: rgba(30, 36, 32, 0.15);
+  stroke-width: 0.8;
+  stroke-dasharray: 2 4;
+}
+
+.site-plan-vector .compass-needle-n {
+  fill: #c5a869;
+  stroke: #997c3b;
+  stroke-width: 0.8;
+}
+
+.site-plan-vector .compass-needle-s,
+.site-plan-vector .compass-needle-w,
+.site-plan-vector .compass-needle-e {
+  fill: #d5d0c4;
+  stroke: #8d928a;
+  stroke-width: 0.8;
+}
+
+.site-plan-vector .compass-center-dot {
+  fill: #161c18;
+}
+
+.site-plan-vector .compass-center-ring {
+  stroke: #c5a869;
+  stroke-width: 1;
+  fill: none;
+}
+
+.site-plan-vector .compass-letter {
+  fill: #484f49;
+  font-family: var(--sans, Arial, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.site-plan-vector .compass-letter-n {
+  fill: #c5a869;
+  font-family: var(--sans, Arial, sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+/* Existing plan-list/detail UI remains functional, but the land graphic does
+   not jump, translate, glow orange, or cast a card-style shadow on selection. */
+.plot-list {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  gap: 18px 8px;
+}
+
+.plot-button {
+  position: relative;
+  z-index: 0;
+  overflow: visible;
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.plot-button:hover,
+.plot-button:focus-visible {
+  z-index: 4;
+}
+
+.plot-button.active {
+  z-index: 5;
+  transform: none;
+  background: #e9ddbc !important;
+  border-color: #151515 !important;
+  box-shadow: none;
+}
+
+.plot-button.active span,
+.plot-button.active b {
+  color: #151515;
+}
+
+.plot-button.active i {
+  color: #5c4133;
+}
+
+.plan-visual {
+  background: #f4efe4;
+  border: 1px solid rgba(197, 168, 105, 0.35);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.08);
+}
+
+.plan-visual > span {
+  display: block;
+  margin-top: 12px;
+  color: #6d6b63;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.plan-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-top: 13px;
+  color: #5c5d56;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.plan-key span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.plan-key i,
+.plan-key b,
+.plan-key em {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #262622;
+}
+
+.plan-key i {
+  background: #e9ddbc;
+}
+
+.plan-key b {
+  background: #faf9f4;
+}
+
+.plan-key em {
+  border-style: dashed;
+  background: #faf9f4;
+}
+
+.sheet-utilities {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.sheet-utilities button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gold, #9b7740);
+  font-size: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.comparison-data {
+  margin: 6px 0 0;
+  color: #626359;
+  font-size: 11px;
+}
+
+.comparison-actions {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.comparison-actions button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.mobile-handoff {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .site-plan-vector .vector-title {
+    font-size: 30px;
+  }
+
+  .site-plan-vector .vertical-brand {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-plan-vector .vector-title {
+    font-size: 30px;
+  }
+
+  .site-plan-vector .vertical-brand {
+    font-size: 53px;
+  }
+
+  .site-plan-vector .plot-id {
+    font-size: 24px;
+  }
+
+  .site-plan-vector .plot-area {
+    font-size: 12px;
+  }
+
+  .site-plan-vector .plot-dimension {
+    font-size: 10px;
+  }
+
+  .comparison-actions {
+    margin-top: 16px;
+    white-space: normal;
+  }
+
+  .mobile-handoff {
+    position: fixed;
+    right: 12px;
+    bottom: 68px;
+    left: 12px;
+    z-index: 25;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #0d2821;
+    border: 1px solid rgba(197, 168, 105, 0.45);
+    border-radius: 6px;
+    color: #f7f5ef;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    font-size: 11px;
+  }
+
+  .mobile-handoff span {
+    color: #dfc78f;
+    font-weight: 500;
+  }
+
+  .mobile-handoff b {
+    color: #f7f4eb;
+    letter-spacing: 0.04em;
+    background: var(--gold, #c5a869);
+    color: #071914;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Filter Pills & Interactive Inspector
+   ------------------------------------------------------------------------- */
+
+.plot-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #787d75;
+  font-weight: 600;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  border: 1px solid rgba(18, 22, 20, 0.16);
+  background: transparent;
+  padding: 8px 14px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.22s var(--ease-premium, ease);
+  color: var(--ink, #121614);
+}
+
+.filter-pill small {
+  background: rgba(18, 22, 20, 0.08);
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.filter-pill:hover {
+  border-color: var(--gold, #c5a869);
+  background: rgba(197, 168, 105, 0.1);
+  transform: translateY(-1px);
+}
+
+.filter-pill.active {
+  background: var(--forest, #071914);
+  color: var(--gold, #c5a869);
+  border-color: var(--forest, #071914);
+  box-shadow: 0 4px 14px rgba(7, 25, 20, 0.15);
+}
+
+.filter-pill.active small {
+  background: rgba(197, 168, 105, 0.22);
+  color: var(--gold-light, #dfc78f);
+}
+
+.plan-inspector {
+  background: var(--forest, #071914);
+  color: var(--ivory, #f7f4eb);
+  padding: 12px 18px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(197, 168, 105, 0.3);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.inspector-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+
+.inspector-content.is-idle {
+  color: #8c948e;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inspect-symbol {
+  color: var(--gold, #c5a869);
+  font-size: 12px;
+}
+
+.inspect-tag {
+  color: var(--gold, #c5a869);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 2px 7px;
+  background: rgba(197, 168, 105, 0.16);
+  border-radius: 4px;
+}
+
+.inspector-content strong {
+  font: 1.25rem var(--serif, Georgia, serif);
+  color: var(--ivory, #f7f4eb);
+  letter-spacing: 0;
+}
+
+.inspect-sep {
+  color: rgba(247, 244, 235, 0.3);
+}
+
+.inspect-data {
+  color: var(--gold-light, #dfc78f);
+  font-weight: 600;
+}
+
+.inspect-corner {
+  background: var(--gold, #c5a869);
+  color: #071914;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.1em;
+}
+
+.inspect-hint {
+  margin-left: auto;
+  color: #8e9a91;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.svg-plot.is-dimmed {
+  opacity: 0.22;
+  transition: opacity 0.25s ease;
+}
+
+.svg-plot.is-dimmed:hover {
+  opacity: 0.9;
+}
+
+.plot-button.is-dimmed {
+  opacity: 0.32;
+  transition: opacity 0.25s ease;
+}
+
+.plot-button.is-dimmed:hover {
+  opacity: 1;
+}
+
+.plot-gaj-text {
+  fill: #858075;
+  font-family: var(--sans, Arial, sans-serif);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-anchor: middle;
+}
+
+.plot-btn-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+.corner-tag {
+  font-style: normal;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8c6f2e;
+  background: rgba(197, 168, 105, 0.24);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.plot-gaj-label {
+  display: block;
+  font-size: 9px;
+  color: #7b8078;
+  margin-top: 2px;
+  letter-spacing: 0.04em;
+}
+
+.plan-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: #6d6b63;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.unit-hint {
+  color: #8c7847;
+  font-weight: 600;
+}
+
+.sheet-sub {
+  display: block;
+  font-size: 11px;
+  color: #b5beb7;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  background: rgba(197, 168, 105, 0.16);
+  border: 1px solid rgba(197, 168, 105, 0.3);
+  color: var(--gold-light, #dfc78f);
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.key-selected {
+  background: #ede4ce !important;
+  border-color: #c5a869 !important;
+}
+
+.key-boundary {
+  background: #faf9f4 !important;
+}
+
+.key-corner {
+  border: 1.5px solid #c5a869 !important;
+  background: #fdfaf2 !important;
+}
+
+.key-common {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #f8f8ef;
+  border: 1px solid #7a9b5d;
+}
+

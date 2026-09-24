@@ -1,0 +1,56 @@
+/* Intentional small-screen ergonomics: readable type, reachable controls, no desktop-only crowding. */
+@media (max-width: 700px) {
+  html { scroll-padding-bottom: 86px; }
+  body { font-size: 15px; }
+
+  .site-header { height: 70px; padding: 0 16px; position: relative; z-index: 101; }
+  .brand { gap: 8px; }
+  .brand-mark { width: 29px; height: 29px; }
+  .brand strong { font-size: 9px; }
+  .brand small { font-size: 7px; }
+  .nav-toggle { width: 46px; height: 46px; }
+  .nav-drawer { top: 70px; z-index: 100; padding: 36px 22px 44px; justify-content: flex-start; overflow-y: auto; }
+  .nav-drawer a { min-height: 48px; display: grid; place-items: center; }
+
+  .section-shell { padding: 66px 20px; }
+  .hero { min-height: auto; }
+  .hero-copy { padding: 74px 20px 42px; }
+  .hero h1 { font-size: clamp(3.7rem, 17vw, 5.1rem); line-height: .9; }
+  .hero-lead { margin: 23px 0; font-size: 16px; }
+  .hero .actions { gap: 10px; }
+  .hero .actions .button { flex: 1 1 100%; min-height: 52px; }
+  .property-finder { margin: 0 16px 58px !important; padding: 22px !important; }
+  .property-finder h2 { font-size: 2rem !important; }
+  .finder-fields { grid-template-columns: 1fr; gap: 8px; }
+  .finder-fields label { min-height: 54px; }
+  .hero-note { position: relative; left: auto; bottom: auto; display: block; margin: 0 20px 24px; }
+  .relief { opacity: .22; right: -110px; top: 235px; }
+
+  .living-interlude { min-height: 575px; padding: 36px 16px 72px; align-items: end; }
+  .living-interlude-copy { max-width: 100%; padding: 21px; }
+  .living-interlude h2 { font-size: clamp(3rem, 14vw, 4.4rem); }
+  .living-interlude-label { display: none; }
+
+  .property-grid, .voice-grid { grid-template-columns: 1fr; }
+  .property-image { height: 235px; }
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 270px 170px 170px; }
+  .gallery-large { grid-row: auto; }
+  .section-top { gap: 16px; }
+  .section-intro { font-size: 15px; }
+  .neelbad-reasons, .service-band, .trust, .enquiry, .faq, .location-panel { gap: 38px; }
+  .reason-list, .service-list, .enquiry-form { grid-template-columns: 1fr; }
+  .reason-list article:nth-child(odd) { border-right: 0; }
+  .service-list article { min-height: 136px; }
+  .trust-image { min-height: 320px; }
+  .visit { padding: 66px 20px; align-items: start; }
+  .visit .button { width: 100%; }
+  .faq-list summary { min-height: 48px; align-items: center; font-size: 1.2rem; }
+  .enquiry-form input, .enquiry-form select, .enquiry-form textarea { min-height: 48px; font-size: 16px; }
+  .enquiry-form .button { width: 100%; min-height: 52px; }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { font-size: 3.45rem; }
+  .living-interlude h2 { font-size: 2.85rem; }
+  .plot-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

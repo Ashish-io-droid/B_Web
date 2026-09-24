@@ -1,0 +1,293 @@
+.spline-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #071914;
+  color: #f7f4eb;
+  overflow: hidden;
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.85s;
+  isolation: isolate;
+}
+
+.spline-intro.is-leaving {
+  transform: translateY(-104%);
+  visibility: hidden;
+}
+
+/* 3D Scene Container */
+.intro-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.65s ease;
+  background: radial-gradient(circle at 65% 50%, #104532 0%, #061b14 70%);
+}
+
+.intro-scene.is-ready {
+  opacity: 1;
+}
+
+.intro-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 68% 48%, rgba(14, 80, 55, 0.38) 0%, rgba(3, 21, 14, 0.1) 52%, transparent 75%);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.intro-scene iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+  filter: hue-rotate(116deg) saturate(1.16) brightness(0.79) contrast(1.12);
+}
+
+/* Vignette & Atmospheric Shading */
+.intro-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #061b14 0%, rgba(6, 27, 20, 0.84) 35%, rgba(6, 27, 20, 0.22) 65%, rgba(6, 27, 20, 0.7) 100%),
+    linear-gradient(0deg, #061b14 0%, rgba(6, 27, 20, 0.58) 20%, transparent 50%);
+}
+
+/* Covers the original scene's lower-left caption without obscuring the relief bars. */
+.intro-scene-mask {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  bottom: 0;
+  width: min(45vw, 720px);
+  height: 34vh;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 16% 82%, #071914 0%, rgba(7, 25, 20, 0.98) 46%, rgba(7, 25, 20, 0.54) 68%, transparent 100%);
+}
+
+/* Loading Screen */
+.intro-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 16px;
+  background: radial-gradient(circle at 50% 45%, #0d2821 0%, #071914 65%);
+  transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.intro-loader.is-ready {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-brand-ring {
+  width: 96px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+}
+
+.loader-logo { width: 90px; height: 57px; object-fit: contain; }
+
+.loader-skeleton {
+  display: flex;
+  gap: 6px;
+}
+
+.loader-skeleton i {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--gold, #c5a869);
+  animation: loaderBars 0.8s ease-in-out infinite;
+}
+
+.loader-skeleton i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.loader-skeleton i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.intro-loader small {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold-light, #dfc78f);
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+@keyframes loaderBars {
+  50% {
+    transform: scaleX(0.4);
+    opacity: 0.35;
+  }
+}
+
+/* Typography & Layout Elements */
+.intro-top {
+  position: absolute;
+  left: clamp(24px, 5vw, 64px);
+  right: clamp(24px, 5vw, 64px);
+  top: 32px;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--gold, #c5a869);
+}
+
+.intro-center {
+  position: absolute;
+  left: clamp(24px, 12vw, 180px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Conceals the source scene's typography while keeping its architectural bars visible. */
+.intro-copy-mask {
+  position: absolute;
+  z-index: -1;
+  inset: -56px -90px -68px -68px;
+  background: radial-gradient(ellipse at 35% 50%, rgba(7, 25, 20, 0.99) 0%, rgba(7, 25, 20, 0.96) 57%, rgba(7, 25, 20, 0.55) 78%, transparent 100%);
+  filter: blur(10px);
+}
+
+.intro-center p {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold, #c5a869);
+  margin: 0 0 18px;
+}
+
+.intro-center h1 {
+  font: clamp(3.8rem, 9.5vw, 9.5rem) / 0.84 var(--serif, Georgia, serif);
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  margin: 0;
+  color: #f7f4eb;
+}
+
+.intro-center em {
+  font-style: italic;
+  color: var(--gold, #c5a869);
+}
+
+/* Bottom Enter Action */
+.intro-actions-bottom {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.intro-enter {
+  border: 1px solid rgba(197, 168, 105, 0.4);
+  background: rgba(7, 25, 20, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 10px 22px;
+  border-radius: 999px;
+  color: #f7f4eb;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+}
+
+.intro-enter b {
+  color: var(--gold, #c5a869);
+  font: 18px var(--serif, Georgia, serif);
+  line-height: 1;
+}
+
+.intro-enter:hover {
+  background: var(--gold, #c5a869);
+  color: #071914;
+  border-color: var(--gold, #c5a869);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(197, 168, 105, 0.35);
+}
+
+.intro-enter:hover b {
+  color: #071914;
+}
+
+.intro-hint {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8c948e;
+}
+
+.intro-credit {
+  position: absolute;
+  right: 25px;
+  bottom: 20px;
+  z-index: 5;
+  color: rgba(247, 244, 235, 0.4);
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 700px) {
+  .intro-center {
+    left: 24px;
+    right: 24px;
+  }
+  .intro-top {
+    top: 24px;
+  }
+  .intro-credit {
+    display: none;
+  }
+  .intro-copy-mask {
+    inset: -42px -30px -54px -34px;
+    background: radial-gradient(ellipse at 40% 50%, rgba(7, 25, 20, 0.99) 0%, rgba(7, 25, 20, 0.93) 72%, transparent 100%);
+  }
+  .intro-actions-bottom {
+    bottom: 28px;
+    width: 90%;
+  }
+  .intro-scene-mask {
+    width: 100%;
+    height: 31vh;
+    background: linear-gradient(0deg, #071914 0%, rgba(7, 25, 20, 0.88) 44%, transparent 100%);
+  }
+  .intro-enter {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spline-intro {
+    transition: none;
+  }
+}
